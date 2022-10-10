@@ -3,6 +3,8 @@ import { DndProvider } from "react-dnd";
 import { HTML5Backend } from "react-dnd-html5-backend";
 import { Canvas } from "./Components/Sticker/Canvas/canvas";
 import { IStickerProps, Sticker } from "./Components/Sticker/sticker";
+import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
+import Edit from "./Pages/Edit/edit";
 
 export const ItemTypes = {
   STICKER: "sticker",
@@ -14,12 +16,13 @@ function App() {
   ]);
 
   return (
-    <DndProvider backend={HTML5Backend}>
-      <Canvas setStickers={setStickers}></Canvas>
-      {stickers.map((sticker) => (
-        <Sticker path={sticker.path} x={sticker.x} y={sticker.y}></Sticker>
-      ))}
-    </DndProvider>
+    <div className="App">
+      <BrowserRouter>
+        <Routes>
+          <Route path="/" element={<Edit />} />
+        </Routes>
+      </BrowserRouter>
+    </div>
   );
 }
 
