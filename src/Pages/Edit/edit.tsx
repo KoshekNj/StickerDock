@@ -1,5 +1,7 @@
 import Header from "../../Components/Header/header";
-import StickerPack from "../../Components/StickerPack/stickerPack";
+import StickerPack, {
+  IPackProps,
+} from "../../Components/StickerPack/stickerPack";
 import "./edit.scss";
 import Icon from "../../Images/iconEMark.png";
 import React from "react";
@@ -20,6 +22,12 @@ const Edit = () => {
     onDragOver: () => null,
     onDragLeave: () => null,
   });
+
+  const packValues: IPackProps = {
+    title: "Unknown sticker pack",
+    author: "User",
+    tags: ["unknown", "notMadeYet", "blank", "europskaUnija"],
+  };
   return (
     <div className=" bg-cover bg-fixed bg-background font-kameron pb-10">
       <div className="h-[40vh] w-full  absolute bg-gradient-to-b from-myYellow"></div>
@@ -29,7 +37,11 @@ const Edit = () => {
           <button className="px-2 my-3 py-0.5 rounded-lg text-sm bg-myYellow">
             Choose another pack
           </button>
-          <StickerPack></StickerPack>
+          <StickerPack
+            title={packValues.title}
+            author={packValues.author}
+            tags={packValues.tags}
+          ></StickerPack>
         </div>
 
         <div className="edit__picture">

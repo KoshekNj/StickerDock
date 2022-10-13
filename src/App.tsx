@@ -5,6 +5,10 @@ import { Canvas } from "./Components/Sticker/Canvas/canvas";
 import { IStickerProps, Sticker } from "./Components/Sticker/sticker";
 import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
 import Edit from "./Pages/Edit/edit";
+import Trending from "./Pages/Feed/feed";
+import Following from "./Pages/Feed/feedFollowing";
+import SingleItem from "./Pages/SingleItem/singleItem";
+import Profile from "./Pages/Profile/profile";
 
 export const ItemTypes = {
   STICKER: "sticker",
@@ -20,6 +24,10 @@ function App() {
       <BrowserRouter>
         <Routes>
           <Route path="/" element={<Edit />} />
+          <Route path="/feed" element={<Trending />} />
+          <Route path="/feed/following" element={<Following />} />
+          <Route path="/item/:id" element={<SingleItem />} />
+          <Route path="/profile/:id" element={<Profile />} />
         </Routes>
       </BrowserRouter>
     </div>

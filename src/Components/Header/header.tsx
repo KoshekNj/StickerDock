@@ -20,7 +20,7 @@ const Header = ({ page }: IHeaderProps) => {
     },
     {
       label: "My profile",
-      link: `/profile/`,
+      link: `/profile/1`,
     },
   ];
   return (
