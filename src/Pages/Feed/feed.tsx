@@ -30,12 +30,12 @@ const Trending = () => {
       <div className="h-[40vh] w-full  absolute bg-gradient-to-b from-myYellow"></div>
       <Header page={page}></Header>
       <div className="flex flex-col items-center z-20 relative">
-        <div className="mt-[80px] text-stone-700  flex justify-center items-center hover:text-black">
+        <div className="mt-8 text-stone-700  flex justify-center items-center hover:text-black">
           <p className="font-bold underline">Trending</p>
           <p className="mx-2">/</p>
           <Link
             className=" hover:text-black  text-stone-700"
-            to="/feed/following"
+            to="/feed/following/1"
           >
             Following
           </Link>

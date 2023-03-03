@@ -5,7 +5,11 @@ import StickerPack, {
 import React from "react";
 import ProfilePic from "../../Images/kermit.png";
 import { Link, useNavigate } from "react-router-dom";
-import { Masonry } from "@mui/lab";
+import { useSearchParams } from "react-router-dom";
+import x from "../../Images/Close_round.png";
+import search from "../../Images/Search_alt.png";
+import Select from "react-select";
+
 const Profile = () => {
   const page = "Profile";
 
@@ -46,18 +50,52 @@ const Profile = () => {
     },
   ];
 
+  let [searchParams, setSearchParams] = useSearchParams();
+  const q = searchParams.get("q");
+  const category = searchParams.get("categories");
+  const [categoryChoice, setCategoryChoice] = React.useState(category || null);
+  const [searchTerm, setSearchTerm] = React.useState(q || "");
+
+  const categoriesOptions: any = [
+    { value: "Date made", label: "Date made DESC" },
+    { value: "Date made ASC", label: "Date made ASC" },
+    { value: "Pack name A-Z", label: "Pack name A-Z" },
+    { value: "Pack name Z-A", label: "Pack name Z-A" },
+  ];
+
+  const handleSubmit = (e: any) => {
+    e.preventDefault();
+    if (searchTerm) {
+      searchParams.set("q", searchTerm);
+    } else {
+      searchParams.delete("q");
+    }
+    setSearchParams(searchParams);
+  };
+
+  const handleCategoryChange = (e: any) => {
+    setCategoryChoice(e.label);
+
+    if (e.label && e.label !== "none") {
+      searchParams.set("categories", e.value);
+    } else {
+      searchParams.delete("categories");
+    }
+    setSearchParams(searchParams);
+  };
+
   const navigate = useNavigate();
   return (
     <div className=" bg-cover bg-fixed bg-background font-kameron pb-10">
       <div className="h-[40vh] w-full  absolute bg-gradient-to-b from-myYellow"></div>
       <Header page={page}></Header>
       <div className="flex flex-col mx-20 relative z-30">
-        <div className="mt-[80px] mb-10 text-stone-700  flex justify-center items-center hover:text-black">
+        <div className="mt-8 mb-8 pl-[57%] text-stone-700  flex items-center hover:text-black">
           <p className="font-bold underline">My Collection</p>
           <p className="mx-2">/</p>
           <Link
             className=" hover:text-black  text-stone-700"
-            to="/profile/gallery"
+            to="/profile/gallery/1"
           >
             Gallery
           </Link>
@@ -83,29 +121,58 @@ const Profile = () => {
             </div>
           </div>
           <div className="flex flex-col items-center w-2/3">
-            <div>
-              <input
-                type="text"
-                placeholder="Sort by"
-                className="border-myYellow"
-              ></input>
-              <input
-                type="text"
-                placeholder="Pack name, tag..."
-                className="border-myYellow"
-              ></input>
+            <div className="w-100% flex justify-center">
+              <form
+                method="get"
+                className="md:w-[300px] bg-white border-myYellow mr-9 rounded-md border-2  flex justify-between"
+                onSubmit={handleSubmit}
+              >
+                <input
+                  value={searchTerm}
+                  onChange={(e) => setSearchTerm(e.target.value)}
+                  name="q"
+                  className="md:w-[300px] px-3 rounded-md flex-1 text-sm placeholder-gray-500"
+                  placeholder="Search by pack name, tags..."
+                ></input>
+                {searchTerm ? (
+                  <button
+                    type="button"
+                    className="rounded-md"
+                    onClick={() => setSearchTerm("")}
+                  >
+                    <img className="w-3.5 h-3.5 m-2 opacity-25" src={x}></img>
+                  </button>
+                ) : null}
+                <button className="rounded-r-md ">
+                  <img className="w-4 h-4 m-2 " src={search}></img>
+                </button>
+              </form>
+
+              <form
+                method="get"
+                className="border-myYellow mr-9 rounded-md border-2 flex z-50"
+                name="category"
+              >
+                <Select
+                  className="text-sm min-w-[150px] placeholder-gray-500"
+                  value={categoriesOptions.find(
+                    (option: any) => option.value === categoryChoice
+                  )}
+                  placeholder={!categoryChoice ? "Category" : categoryChoice}
+                  options={categoriesOptions}
+                  onChange={handleCategoryChange}
+                />
+              </form>
             </div>
 
-            <div className="mt-16 w-full">
-              <Masonry columns={3} spacing={6}>
-                {packValues.map((value) => (
-                  <StickerPack
-                    title={value.title}
-                    author={value.author}
-                    tags={value.tags}
-                  />
-                ))}
-              </Masonry>
+            <div className="mt-16 w-full flex">
+              {packValues.map((value) => (
+                <StickerPack
+                  title={value.title}
+                  author={value.author}
+                  tags={value.tags}
+                />
+              ))}
             </div>
           </div>
         </div>

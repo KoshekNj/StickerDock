@@ -11,8 +11,13 @@ import { useDropzone } from "react-dropzone";
 
 const Edit = () => {
   const page = "Editor";
+  const [image, setImage] = React.useState("");
   const onDrop = React.useCallback((acceptedFiles: any) => {
-    console.log(acceptedFiles);
+    const reader = new FileReader();
+    reader.readAsDataURL(acceptedFiles[0]);
+    reader.onload = function () {
+      setImage(reader.result as any);
+    };
   }, []);
   //const [picture, setPicture] = React.useState([]);
   const { getRootProps, getInputProps, isDragActive, inputRef } = useDropzone({
@@ -34,16 +39,16 @@ const Edit = () => {
       <Header page={page}></Header>
       <div className="edit">
         <div className="edit__sticker">
-          <button className="px-2 my-3 py-0.5 rounded-lg text-sm bg-myYellow">
+          {/* <button className="px-2 my-3 py-0.5 rounded-lg text-sm bg-myYellow">
             Choose another pack
-          </button>
+          </button> */}
           <StickerPack
             title={packValues.title}
             author={packValues.author}
             tags={packValues.tags}
           ></StickerPack>
         </div>
-
+        <img src={image}></img>
         <div className="edit__picture">
           <div className="edit__picture--border">
             <div

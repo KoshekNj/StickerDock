@@ -26,8 +26,8 @@ const Header = ({ page }: IHeaderProps) => {
   return (
     <div className="flex bg-gradient-to-b relative z-1 from-myYellow px-10 pt-5 font-kameron justify-between">
       <div className="flex justify-center align-center">
-        <img className="w-[295px] h-[65px]" src={title} alt="title"></img>
-        <h1 className="text-stone-700 text-3xl leading-[60px] ml-7">DOCK</h1>
+        <img className="w-[270px] h-[61px]" src={title} alt="title"></img>
+        <h1 className="text-stone-700 text-2xl leading-[60px] ml-7">DOCK</h1>
       </div>
       <div className="flex w-1/3 justify-between items-center">
         {links.map((link, i) =>
@@ -52,7 +52,7 @@ const Header = ({ page }: IHeaderProps) => {
         )}
       </div>
       <img
-        className="w-[30px] h-[30px] self-center"
+        className="w-[27px] h-[27px] self-center"
         src={HelpIcon}
         alt="Help Icon"
       ></img>

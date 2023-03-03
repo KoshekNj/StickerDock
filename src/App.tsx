@@ -25,7 +25,7 @@ function App() {
         <Routes>
           <Route path="/" element={<Edit />} />
           <Route path="/feed" element={<Trending />} />
-          <Route path="/feed/following" element={<Following />} />
+          <Route path="/feed/following/:id" element={<Following />} />
           <Route path="/item/:id" element={<SingleItem />} />
           <Route path="/profile/:id" element={<Profile />} />
         </Routes>
