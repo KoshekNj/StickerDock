@@ -1,9 +1,8 @@
 .edit{
     display:flex;
-    flex-direction: space-between;
-    margin-left:7rem;
-    padding:2rem 0rem 0rem 3rem;
-    margin-bottom: 4rem;
+    justify-content: space-between;
+    margin: 4rem auto;
+    padding: 0 4rem;
     min-height:550px;
 
     &__sticker{
@@ -12,10 +11,14 @@
         padding-top:1rem;
     }
 
+    &__uploaded-picture{
+        width: 70%;
+    }
+
     &__picture{
         width:70%;
         padding:1rem 6rem 1rem 1rem;
-   
+
 
         &--border{
           

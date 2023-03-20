@@ -48,32 +48,35 @@ const Edit = () => {
             tags={packValues.tags}
           ></StickerPack>
         </div>
-        <img src={image}></img>
-        <div className="edit__picture">
-          <div className="edit__picture--border">
-            <div
-              className="flex flex-col align-center items-center"
-              {...getRootProps()}
-            >
-              <input ref={inputRef} {...getInputProps()} />
-              {isDragActive ? (
-                <p>Drop the files here ...</p>
-              ) : (
-                <>
-                  <img
-                    src={Icon}
-                    className="w-[50px] h-[130px] self-center"
-                    alt="exclamation mark icon"
-                  ></img>
-                  <p className="my-4">Drop your pictures here or</p>
-                  <button className="bg-myYellow rounded-md text-sm py-0.5 w-[65%]">
-                    Browse folders
-                  </button>
-                </>
-              )}
+        {image ? (
+          <img className="edit__uploaded-picture" src={image} />
+        ) : (
+          <div className="edit__picture">
+            <div className="edit__picture--border">
+              <div
+                className="flex flex-col align-center items-center"
+                {...getRootProps()}
+              >
+                <input ref={inputRef} {...getInputProps()} />
+                {isDragActive ? (
+                  <p>Drop the files here ...</p>
+                ) : (
+                  <>
+                    <img
+                      src={Icon}
+                      className="w-[50px] h-[130px] self-center"
+                      alt="exclamation mark icon"
+                    ></img>
+                    <p className="my-4">Drop your pictures here or</p>
+                    <button className="bg-myYellow rounded-md text-sm py-0.5 w-[65%]">
+                      Browse folders
+                    </button>
+                  </>
+                )}
+              </div>
             </div>
           </div>
-        </div>
+        )}
       </div>
     </div>
   );
