@@ -10,8 +10,8 @@ module.exports = {
         myYellow: "#F7FB29",
       },
       backgroundImage: {
-        background: "url('/src/Images/background.png')",
-        packBackground: "url('/src/Images/PackBg.png')",
+        background: "url('/src/Images/background.jpg')",
+        packBackground: "url('/src/Images/PackBg.jpg')",
       },
     },
   },
