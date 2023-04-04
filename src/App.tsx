@@ -6,9 +6,9 @@ import { IStickerProps, Sticker } from "./Components/Sticker/sticker";
 import { Routes, Route, BrowserRouter, Link } from "react-router-dom";
 import Edit from "./Pages/Edit/edit";
 import Trending from "./Pages/Feed/feed";
-import Following from "./Pages/Feed/feedFollowing";
 import SingleItem from "./Pages/SingleItem/singleItem";
 import Profile from "./Pages/Profile/profile";
+import Gallery from "./Pages/Profile/gallery";
 
 export const ItemTypes = {
   STICKER: "sticker",
@@ -27,6 +27,7 @@ function App() {
           <Route path="/feed" element={<Trending />} />
           <Route path="/item/:id" element={<SingleItem />} />
           <Route path="/profile/:id" element={<Profile />} />
+          <Route path="/profile/gallery/:id" element={<Gallery />} />
         </Routes>
       </BrowserRouter>
     </div>
