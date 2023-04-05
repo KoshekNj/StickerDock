@@ -12,7 +12,7 @@ import Select from "react-select";
 import Masonry from "@mui/lab/Masonry";
 
 const Gallery = () => {
-  const page = "Gallery";
+  const page = "My profile";
 
   const testValues = [
     {
@@ -70,10 +70,10 @@ const Gallery = () => {
   const navigate = useNavigate();
   return (
     <div className=" bg-cover bg-fixed bg-background font-kameron pb-10">
-      <div className="h-[40vh] w-full  absolute bg-gradient-to-b from-myYellow"></div>
+      <div className="h-[18vh] md:h-[20vh] lg:h-[40vh] w-full  absolute bg-gradient-to-b from-myYellow"></div>
       <Header page={page}></Header>
       <div className="flex flex-col ml-6 lg:mx-20 relative z-30">
-        <div className="mt-8 mb-8 pl-[57%] text-stone-700  flex items-center hover:text-black">
+        <div className="mt-8 mb-8 justify-center md:justify-start md:pl-[50%] lg:pl-[57%] text-stone-700  flex items-center hover:text-black">
           <Link className="hover:text-black  text-stone-700" to="/profile/1">
             My Collection
           </Link>
@@ -81,7 +81,7 @@ const Gallery = () => {
           <p className=" font-bold underline">Gallery</p>
         </div>
         <div className="flex justify-between mt-10">
-          <div className="w-[27%]">
+          <div className="w-[27%] hidden md:block">
             <div className="bg-yellow-100  min-h-[190px] mb-5">
               <div className="bg-yellow-200 h-[20px]"></div>
               <div className="flex p-3">
@@ -100,7 +100,7 @@ const Gallery = () => {
               <p>Settings</p>
             </div>
           </div>
-          <div className="flex flex-col items-center w-2/3">
+          <div className="flex flex-col items-center grow">
             <div className="w-100% flex justify-center">
               <form
                 method="get"
@@ -145,10 +145,10 @@ const Gallery = () => {
               </form>
             </div>
 
-            <div className="mt-16 w-full flex">
-              <Masonry columns={3} spacing={5}>
+            <div className="mt-16 w-full flex justify-center">
+              <Masonry columns={3} spacing={{ md: 2, lg: 5 }}>
                 {testValues.map((value) => (
-                  <div className="hover:bg-yellow-50 p-3">
+                  <div className="lg:hover:bg-yellow-50 p-3">
                     <img
                       className="shadow"
                       src={value.image}

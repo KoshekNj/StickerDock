@@ -11,7 +11,7 @@ import search from "../../Images/Search_alt.png";
 import Select from "react-select";
 
 const Profile = () => {
-  const page = "Profile";
+  const page = "My profile";
 
   const packValues: IPackProps[] = [
     {

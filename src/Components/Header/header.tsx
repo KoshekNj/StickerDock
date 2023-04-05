@@ -24,12 +24,16 @@ const Header = ({ page }: IHeaderProps) => {
     },
   ];
   return (
-    <div className="flex bg-gradient-to-b relative z-1 from-myYellow px-10 pt-5 font-kameron justify-between">
+    <div className="flex flex-col md:flex-row bg-gradient-to-b relative z-1 from-myYellow px-10 pt-5 font-kameron justify-between">
       <div className="flex justify-center align-center">
-        <img className="w-[270px] h-[61px]" src={title} alt="title"></img>
+        <img
+          className="w-[240px] h-[52px] md:w-[270px] md:h-[61px]"
+          src={title}
+          alt="title"
+        ></img>
         <h1 className="text-stone-700 text-2xl leading-[60px] ml-7">DOCK</h1>
       </div>
-      <div className="flex w-1/3 justify-between items-center">
+      <div className="flex mt-5 md:mt-0 md:w-1/3 justify-evenly flex-grow items-center">
         {links.map((link, i) =>
           link.label === page ? (
             <div key={link.label}>
@@ -51,11 +55,11 @@ const Header = ({ page }: IHeaderProps) => {
           )
         )}
       </div>
-      <img
+      {/* <img
         className="w-[27px] h-[27px] self-center"
         src={HelpIcon}
         alt="Help Icon"
-      ></img>
+      ></img> */}
     </div>
   );
 };
